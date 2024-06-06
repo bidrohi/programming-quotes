@@ -1,0 +1,96 @@
+[versions]
+build-sdk-min="21"
+build-sdk-target="35"
+build-sdk-compile="35"
+build-tools="35.0.0"
+build-ndk="27.0.12077973"
+
+android-gradle = "8.5.1"
+
+jetbrains-kotlin-core = "2.0.0"
+jetbrains-kotlin-coroutines = "1.8.1"
+jetbrains-kotlin-datetime = "0.6.0"
+jetbrains-kotlinx-json = "1.7.1"
+jetbrains-kover-gradle = "0.8.3"
+jetbrains-compose = "1.6.11"
+jetbrains-lifecycle = "2.8.0"
+
+google-ksp = "2.0.0-1.0.23"
+
+kotlin-inject="0.7.1"
+
+jdk-desugar = "2.0.4"
+
+kermit = "2.0.4"
+
+ktor = "3.0.0-beta-2"
+ktorfit = "2.0.0"
+
+androidx-activityCompose = "1.9.1"
+androidx-core = "1.13.1"
+androidx-fragment = "1.8.2"
+androidx-lifecycle-extensions = "2.2.0"
+
+bhandar = "0.1.0"
+
+test-junit = "4.13.2"
+test-mokkery = "2.0.0"
+test-turbine = "1.1.0"
+
+[libraries]
+androidx-core = { module = "androidx.core:core-ktx", version.ref = "androidx-core" }
+androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activityCompose" }
+androidx-fragment = { module = "androidx.fragment:fragment-ktx", version.ref = "androidx-fragment" }
+androidx-lifecycle-extensions = { module = "androidx.lifecycle:lifecycle-extensions", version.ref = "androidx-lifecycle-extensions" }
+
+jetbrains-kotlin-script = { module = "org.jetbrains.kotlin:kotlin-script-runtime", version.ref = "jetbrains-kotlin-core" }
+jetbrains-kotlin-std-lib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "jetbrains-kotlin-core" }
+jetbrains-kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "jetbrains-kotlin-coroutines" }
+jetbrains-kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "jetbrains-kotlin-coroutines" }
+jetbrains-kotlinx-coroutines-swing = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-swing", version.ref = "jetbrains-kotlin-coroutines" }
+jetbrains-kotlinx-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "jetbrains-kotlin-datetime" }
+jetbrains-kotlinx-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "jetbrains-kotlinx-json" }
+jetbrains-lifecycle = { group = "org.jetbrains.androidx.lifecycle", name = "lifecycle-viewmodel-compose", version.ref = "jetbrains-lifecycle" }
+
+jdk-desugar = { module = "com.android.tools:desugar_jdk_libs", version.ref = "jdk-desugar" }
+
+kotlin-inject-runtime = { module = "me.tatarka.inject:kotlin-inject-runtime", version.ref = "kotlin-inject" }
+kotlin-inject-compiler = { module = "me.tatarka.inject:kotlin-inject-compiler-ksp", version.ref = "kotlin-inject" }
+
+kermit = { group = "co.touchlab", name = "kermit", version.ref = "kermit" }
+
+ktor-core = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
+ktor-android = { module = "io.ktor:ktor-client-android", version.ref = "ktor" }
+ktor-cio = { module = "io.ktor:ktor-client-cio", version.ref = "ktor" }
+ktor-darwin = { module = "io.ktor:ktor-client-darwin", version.ref = "ktor" }
+ktor-js = { module = "io.ktor:ktor-client-js", version.ref = "ktor" }
+ktor-contentNegotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktor" }
+ktor-json = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
+ktor-logging = { module = "io.ktor:ktor-client-logging", version.ref = "ktor" }
+ktorfit-lib = { module = "de.jensklingenberg.ktorfit:ktorfit-lib-light", version.ref = "ktorfit" }
+
+bhandar = { group = "com.bidyut.tech.bhandar", name = "bhandar", version.ref = "bhandar" }
+
+test-jetbrains-kotlin = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "jetbrains-kotlin-core" }
+test-jetbrains-kotlinx-coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "jetbrains-kotlin-coroutines" }
+test-junit = { module = "junit:junit", version.ref = "test-junit" }
+test-ktor-mock = { module = "io.ktor:ktor-client-mock", version.ref = "ktor" }
+test-turbine = { module = "app.cash.turbine:turbine", version.ref = "test-turbine" }
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "android-gradle" }
+android-library = { id = "com.android.library", version.ref = "android-gradle" }
+
+jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "jetbrains-kotlin-core" }
+jetbrains-kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "jetbrains-kotlin-core" }
+jetbrains-kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "jetbrains-kotlin-core" }
+jetbrains-kotlin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "jetbrains-kotlin-core" }
+jetbrains-kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "jetbrains-kotlin-core" }
+jetbrains-compose = { id = "org.jetbrains.compose", version.ref = "jetbrains-compose" }
+jetbrains-kotlinx-kover = { id = "org.jetbrains.kotlinx.kover", version.ref = "jetbrains-kover-gradle" }
+
+google-ksp = { id = "com.google.devtools.ksp", version.ref = "google-ksp" }
+
+ktorfit = { id = "de.jensklingenberg.ktorfit", version.ref = "ktorfit" }
+
+test-mokkery = { id = "dev.mokkery", version.ref = "test-mokkery" }
