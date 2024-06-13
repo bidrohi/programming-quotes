@@ -62,4 +62,16 @@ abstract class CommonGraph(
         baseUrl("https://programming-quotesapi.vercel.app/api/")
         httpClient(httpClient)
     }.createQuotesService()
+
+    companion object {
+        private lateinit var instance: CommonGraph
+
+        fun init(
+            graph: CommonGraph
+        ) {
+            instance = graph
+        }
+
+        fun get() = instance
+    }
 }

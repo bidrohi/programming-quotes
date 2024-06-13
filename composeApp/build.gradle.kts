@@ -64,6 +64,9 @@ kotlin {
             implementation(compose.components.resources)
             implementation(compose.components.uiToolingPreview)
 
+            implementation(libs.jetbrains.kotlinx.coroutines.core)
+            implementation(libs.jetbrains.lifecycle)
+
             implementation(libs.kotlin.inject.runtime)
 
             implementation(libs.kermit)
@@ -89,6 +92,7 @@ kotlin {
         androidMain.dependencies {
             implementation(compose.preview)
             implementation(libs.androidx.activity.compose)
+            implementation(libs.jetbrains.kotlinx.coroutines.android)
 
             implementation(libs.ktor.android)
         }
@@ -98,6 +102,7 @@ kotlin {
         val desktopMain by getting
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)
+            implementation(libs.jetbrains.kotlinx.coroutines.swing)
 
             implementation(libs.ktor.cio)
         }
