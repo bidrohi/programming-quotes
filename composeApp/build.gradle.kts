@@ -1,36 +1,19 @@
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
-import org.jetbrains.kotlin.gradle.targets.js.dsl.ExperimentalWasmDsl
-import org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpackConfig
 
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.multiplatform)
+    alias(libs.plugins.jetbrains.kotlin.serialization)
     alias(libs.plugins.jetbrains.kotlin.compose)
     alias(libs.plugins.jetbrains.compose)
     alias(libs.plugins.google.ksp)
+    alias(libs.plugins.ktorfit)
     alias(libs.plugins.jetbrains.kotlinx.kover)
 }
 
 kotlin {
-    @OptIn(ExperimentalWasmDsl::class)
-    wasmJs {
-        moduleName = "composeApp"
-        browser {
-            commonWebpackConfig {
-                outputFileName = "composeApp.js"
-                devServer = (devServer ?: KotlinWebpackConfig.DevServer()).apply {
-                    static = (static ?: mutableListOf()).apply {
-                        // Serve sources to debug inside browser
-                        add(project.projectDir.path)
-                    }
-                }
-            }
-        }
-        binaries.executable()
-    }
-    
     androidTarget {
         @OptIn(ExperimentalKotlinGradlePluginApi::class)
         compilerOptions {
@@ -38,10 +21,7 @@ kotlin {
         }
     }
     
-    jvm("desktop")
-    
     listOf(
-        iosX64(),
         iosArm64(),
         iosSimulatorArm64()
     ).forEach { iosTarget ->
@@ -50,8 +30,31 @@ kotlin {
             isStatic = true
         }
     }
-    
+
+    jvm("desktop")
+
+//    @OptIn(ExperimentalWasmDsl::class)
+//    wasmJs {
+//        moduleName = "composeApp"
+//        browser {
+//            commonWebpackConfig {
+//                outputFileName = "composeApp.js"
+//                devServer = (devServer ?: KotlinWebpackConfig.DevServer()).apply {
+//                    static = (static ?: mutableListOf()).apply {
+//                        // Serve sources to debug inside browser
+//                        add(project.projectDir.path)
+//                    }
+//                }
+//            }
+//        }
+//        binaries.executable()
+//    }
+
     sourceSets {
+        commonMain {
+            // Work around for Ktorfit bug: https://github.com/Foso/Ktorfit/issues/591
+            kotlin.srcDir("${layout.buildDirectory.get()}/generated/ksp/metadata/commonMain/kotlin")
+        }
         commonMain.dependencies {
             implementation(compose.runtime)
             implementation(compose.foundation)
@@ -59,15 +62,49 @@ kotlin {
             implementation(compose.ui)
             implementation(compose.components.resources)
             implementation(compose.components.uiToolingPreview)
+
+            implementation(libs.kotlin.inject.runtime)
+
+            implementation(libs.kermit)
+
+            implementation(libs.jetbrains.kotlinx.json)
+
+            implementation(libs.ktor.core)
+            implementation(libs.ktor.contentNegotiation)
+            implementation(libs.ktor.json)
+            implementation(libs.ktor.logging)
+
+            implementation(libs.ktorfit.lib)
+        }
+        commonTest.dependencies {
+            implementation(libs.test.junit)
+            implementation(libs.test.jetbrains.kotlin)
+            implementation(libs.test.ktor.mock)
         }
         androidMain.dependencies {
             implementation(compose.preview)
             implementation(libs.androidx.activity.compose)
+
+            implementation(libs.ktor.android)
+        }
+        iosMain.dependencies {
+            implementation(libs.ktor.darwin)
         }
         val desktopMain by getting
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)
+
+            implementation(libs.ktor.cio)
         }
+//        wasmJsMain.dependencies {
+//            implementation(libs.ktor.js)
+//        }
+    }
+}
+
+dependencies {
+    with(libs.kotlin.inject.compiler) {
+        add("kspCommonMainMetadata", this)
     }
 }
 
