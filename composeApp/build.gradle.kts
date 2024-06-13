@@ -10,6 +10,7 @@ plugins {
     alias(libs.plugins.jetbrains.compose)
     alias(libs.plugins.google.ksp)
     alias(libs.plugins.ktorfit)
+    alias(libs.plugins.test.mokkery)
     alias(libs.plugins.jetbrains.kotlinx.kover)
 }
 
@@ -75,11 +76,15 @@ kotlin {
             implementation(libs.ktor.logging)
 
             implementation(libs.ktorfit.lib)
+
+            implementation(libs.bhandar)
         }
         commonTest.dependencies {
             implementation(libs.test.junit)
             implementation(libs.test.jetbrains.kotlin)
+            implementation(libs.test.jetbrains.kotlinx.coroutines)
             implementation(libs.test.ktor.mock)
+            implementation(libs.test.turbine)
         }
         androidMain.dependencies {
             implementation(compose.preview)
