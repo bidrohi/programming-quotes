@@ -7,6 +7,6 @@ Samples planned fort this project:
 - [x] iOS
 - [x] JVM Desktop
 - [ ] Wasm Browser
-- [ ] MacOS Desktop
+- [x] MacOS Desktop
 - [ ] Windows Desktop
 - [ ] Linux Desktop

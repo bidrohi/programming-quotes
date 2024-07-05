@@ -34,6 +34,14 @@ kotlin {
 
     jvm("desktop")
 
+    macosArm64 {
+        binaries {
+            executable {
+                entryPoint = "main"
+            }
+        }
+    }
+
 //    @OptIn(ExperimentalWasmDsl::class)
 //    wasmJs {
 //        moduleName = "composeApp"
@@ -105,6 +113,9 @@ kotlin {
             implementation(libs.jetbrains.kotlinx.coroutines.swing)
 
             implementation(libs.ktor.cio)
+        }
+        macosMain.dependencies {
+            implementation(libs.ktor.darwin)
         }
 //        wasmJsMain.dependencies {
 //            implementation(libs.ktor.js)

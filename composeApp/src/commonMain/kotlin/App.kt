@@ -9,6 +9,7 @@ import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -29,12 +30,17 @@ fun App(
     viewModel: QuotesViewModel = viewModel(factory = UiGraph.build().ourViewModelFactory)
 ) {
     MaterialTheme {
-        val state by viewModel.uiState.collectAsState(QuotesViewModel.UiState.Loading)
-        val contentModifier = Modifier.fillMaxSize()
-        when (val s = state) {
-            is QuotesViewModel.UiState.Loading -> LoadingScreen(contentModifier)
-            is QuotesViewModel.UiState.Error -> ErrorScreen(s.errorMessage, contentModifier)
-            is QuotesViewModel.UiState.ShowContent -> QuotesScreen(s.quotes, contentModifier)
+        Surface(
+            color = MaterialTheme.colors.background,
+            modifier = Modifier.fillMaxSize()
+        ) {
+            val state by viewModel.uiState.collectAsState(QuotesViewModel.UiState.Loading)
+            val contentModifier = Modifier.fillMaxSize()
+            when (val s = state) {
+                is QuotesViewModel.UiState.Loading -> LoadingScreen(contentModifier)
+                is QuotesViewModel.UiState.Error -> ErrorScreen(s.errorMessage, contentModifier)
+                is QuotesViewModel.UiState.ShowContent -> QuotesScreen(s.quotes, contentModifier)
+            }
         }
     }
 }
