@@ -1,5 +1,6 @@
 package dev.quotes.ui
 
+import com.rickclephas.kmp.nativecoroutines.NativeCoroutinesState
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -11,6 +12,7 @@ import kotlin.native.ObjCName
 abstract class TriggerUseCase<Trigger, UiState>(
     @ObjCName("_") protected val useCaseScope: CoroutineScope,
 ) {
+    @NativeCoroutinesState
     val uiState by lazy {
         makeFlow().stateIn(
             useCaseScope,

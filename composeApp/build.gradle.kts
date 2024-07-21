@@ -9,6 +9,7 @@ plugins {
     alias(libs.plugins.jetbrains.kotlin.compose)
     alias(libs.plugins.jetbrains.compose)
     alias(libs.plugins.google.ksp)
+    alias(libs.plugins.native.coroutines)
     alias(libs.plugins.ktorfit)
     alias(libs.plugins.test.mokkery)
     alias(libs.plugins.jetbrains.kotlinx.kover)

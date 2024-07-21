@@ -93,4 +93,6 @@ google-ksp = { id = "com.google.devtools.ksp", version.ref = "google-ksp" }
 
 ktorfit = { id = "de.jensklingenberg.ktorfit", version.ref = "ktorfit" }
 
+native-coroutines = { id = "com.rickclephas.kmp.nativecoroutines", version = "1.0.0-ALPHA-32" }
+
 test-mokkery = { id = "dev.mokkery", version.ref = "test-mokkery" }
