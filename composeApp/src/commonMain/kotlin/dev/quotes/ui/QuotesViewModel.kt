@@ -1,11 +1,10 @@
 package dev.quotes.ui
 
 import androidx.lifecycle.ViewModel
-import com.bidyut.tech.bhandar.ReadResult
+import androidx.lifecycle.viewModelScope
 import dev.quotes.data.QuotesRepository
 import dev.quotes.di.RetainedScope
-import dev.quotes.network.model.QuoteWithAuthor
-import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.Flow
 import me.tatarka.inject.annotations.Inject
 
 @Inject
@@ -14,23 +13,8 @@ class QuotesViewModel(
     repository: QuotesRepository
 ) : ViewModel() {
 
-    val uiState = repository.getQuotes().map { response ->
-        when (response) {
-            is ReadResult.Loading -> UiState.Loading
-            is ReadResult.Error -> UiState.Error(response.errorMessage)
-            is ReadResult.Data -> UiState.ShowContent(response.data.orEmpty())
-        }
-    }
+    private val useCase = QuotesUseCase(repository, viewModelScope)
 
-    sealed interface UiState {
-        data object Loading : UiState
-
-        data class Error(
-            val errorMessage: String,
-        ) : UiState
-
-        data class ShowContent(
-            val quotes: List<QuoteWithAuthor>,
-        ) : UiState
-    }
+    val uiState: Flow<QuotesUseCase.UiState>
+        get() = useCase.uiState
 }

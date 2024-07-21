@@ -60,6 +60,9 @@ kotlin {
 //    }
 
     sourceSets {
+        all {
+            languageSettings.optIn("kotlin.experimental.ExperimentalObjCName")
+        }
         commonMain {
             // Work around for Ktorfit bug: https://github.com/Foso/Ktorfit/issues/591
             kotlin.srcDir("${layout.buildDirectory.get()}/generated/ksp/metadata/commonMain/kotlin")

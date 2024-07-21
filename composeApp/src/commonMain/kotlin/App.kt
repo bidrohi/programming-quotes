@@ -20,6 +20,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import dev.quotes.network.model.QuoteWithAuthor
+import dev.quotes.ui.QuotesUseCase
 import dev.quotes.ui.QuotesViewModel
 import dev.quotes.ui.UiGraph
 import org.jetbrains.compose.ui.tooling.preview.Preview
@@ -34,12 +35,12 @@ fun App(
             color = MaterialTheme.colors.background,
             modifier = Modifier.fillMaxSize()
         ) {
-            val state by viewModel.uiState.collectAsState(QuotesViewModel.UiState.Loading)
+            val state by viewModel.uiState.collectAsState(QuotesUseCase.UiState.Loading)
             val contentModifier = Modifier.fillMaxSize()
             when (val s = state) {
-                is QuotesViewModel.UiState.Loading -> LoadingScreen(contentModifier)
-                is QuotesViewModel.UiState.Error -> ErrorScreen(s.errorMessage, contentModifier)
-                is QuotesViewModel.UiState.ShowContent -> QuotesScreen(s.quotes, contentModifier)
+                is QuotesUseCase.UiState.Loading -> LoadingScreen(contentModifier)
+                is QuotesUseCase.UiState.Error -> ErrorScreen(s.errorMessage, contentModifier)
+                is QuotesUseCase.UiState.ShowContent -> QuotesScreen(s.quotes, contentModifier)
             }
         }
     }
