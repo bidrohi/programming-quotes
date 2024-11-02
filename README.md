@@ -10,3 +10,5 @@ Samples planned fort this project:
 - [x] MacOS Desktop
 - [ ] Windows Desktop
 - [ ] Linux Desktop
+
+![screen-recording.gif](screen-recording.gif)
