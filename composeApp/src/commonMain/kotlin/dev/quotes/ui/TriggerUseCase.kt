@@ -11,9 +11,9 @@ import kotlin.native.ObjCName
 
 abstract class TriggerUseCase<Trigger, UiState>(
     @ObjCName("_") protected val useCaseScope: CoroutineScope,
-) {
+) : TriggerViewModel<Trigger, UiState> {
     @NativeCoroutinesState
-    val uiState by lazy {
+    override val uiState by lazy {
         makeFlow().stateIn(
             useCaseScope,
             SharingStarted.Lazily,
@@ -23,8 +23,8 @@ abstract class TriggerUseCase<Trigger, UiState>(
 
     private val triggerFlow: MutableSharedFlow<Trigger> = MutableSharedFlow()
 
-    fun sendTrigger(
-        @ObjCName("_") trigger: Trigger,
+    override fun sendTrigger(
+        trigger: Trigger,
     ) {
         useCaseScope.launch {
             triggerFlow.emit(trigger)
