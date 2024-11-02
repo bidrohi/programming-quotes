@@ -3,9 +3,9 @@ build-sdk-min="21"
 build-sdk-target="35"
 build-sdk-compile="35"
 build-tools="35.0.0"
-build-ndk="27.0.12077973"
+build-ndk="27.1.12297006"
 
-android-gradle = "8.5.1"
+android-gradle = "8.7.2"
 
 jetbrains-kotlin-core = "2.0.0"
 jetbrains-kotlin-coroutines = "1.8.1"
