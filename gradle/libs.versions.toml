@@ -1,9 +1,9 @@
 [versions]
-build-sdk-min="21"
-build-sdk-target="35"
-build-sdk-compile="35"
-build-tools="35.0.0"
-build-ndk="27.1.12297006"
+build-sdk-min = "21"
+build-sdk-target = "35"
+build-sdk-compile = "35"
+build-tools = "35.0.0"
+build-ndk = "27.1.12297006"
 
 android-gradle = "8.7.2"
 
@@ -12,32 +12,32 @@ jetbrains-kotlin-coroutines = "1.9.0"
 jetbrains-kotlin-datetime = "0.6.1"
 jetbrains-kotlinx-json = "1.7.3"
 jetbrains-kover-gradle = "0.8.3"
-jetbrains-compose = "1.7.0"
-jetbrains-lifecycle = "2.8.3"
+jetbrains-compose = "1.7.1"
+jetbrains-lifecycle = "2.8.4"
 
-google-ksp = "2.0.21-1.0.25"
+google-ksp = "2.0.21-1.0.27"
 
-kotlin-inject="0.7.2"
+kotlin-inject = "0.7.2"
 
-jdk-desugar = "2.1.2"
+jdk-desugar = "2.1.3"
 
 kermit = "2.0.4"
 
-ktor = "3.0.0"
-ktorfit = "2.1.0"
+ktor = "3.0.1"
+ktorfit = "2.2.0"
 
 androidx-activityCompose = "1.9.3"
 androidx-core = "1.15.0"
 androidx-fragment = "1.8.5"
 androidx-lifecycle-extensions = "2.2.0"
 
-bhandar = "0.1.0"
+bhandar = "0.2.0"
 
 native-coroutines = "1.0.0-ALPHA-37"
 
 test-junit = "4.13.2"
-test-mokkery = "2.4.0"
-test-turbine = "1.1.0"
+test-mokkery = "2.5.1"
+test-turbine = "1.2.0"
 
 [libraries]
 androidx-core = { module = "androidx.core:core-ktx", version.ref = "androidx-core" }
@@ -69,7 +69,7 @@ ktor-js = { module = "io.ktor:ktor-client-js", version.ref = "ktor" }
 ktor-contentNegotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktor" }
 ktor-json = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
 ktor-logging = { module = "io.ktor:ktor-client-logging", version.ref = "ktor" }
-ktorfit-lib = { module = "de.jensklingenberg.ktorfit:ktorfit-lib-light-ktor-3.0.0", version.ref = "ktorfit" }
+ktorfit-lib = { module = "de.jensklingenberg.ktorfit:ktorfit-lib-light", version.ref = "ktorfit" }
 
 bhandar = { group = "com.bidyut.tech.bhandar", name = "bhandar", version.ref = "bhandar" }
 
