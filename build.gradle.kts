@@ -10,6 +10,7 @@ plugins {
     alias(libs.plugins.jetbrains.kotlin.parcelize).apply(false)
     alias(libs.plugins.jetbrains.kotlin.serialization).apply(false)
     alias(libs.plugins.jetbrains.kotlinx.kover).apply(false)
+    alias(libs.plugins.jetbrains.compose).apply(false)
     alias(libs.plugins.ktorfit).apply(false)
 }
 
