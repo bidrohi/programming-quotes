@@ -1,5 +1,6 @@
 package dev.quotes.ui
 
+import com.rickclephas.kmp.nativecoroutines.NativeCoroutinesIgnore
 import com.rickclephas.kmp.nativecoroutines.NativeCoroutinesState
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.Flow
@@ -14,6 +15,7 @@ abstract class FlowUseCase<UiState>(
         makeStateFlow()
     }
 
+    @NativeCoroutinesIgnore
     protected open fun makeStateFlow() = makeFlow().stateIn(
         useCaseScope,
         SharingStarted.Lazily,
@@ -22,5 +24,6 @@ abstract class FlowUseCase<UiState>(
 
     protected abstract fun makeInitialState(): UiState
 
+    @NativeCoroutinesIgnore
     protected abstract fun makeFlow(): Flow<UiState>
 }

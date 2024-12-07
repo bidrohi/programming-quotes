@@ -3,6 +3,7 @@ package dev.quotes.data
 import com.bidyut.tech.bhandar.Bhandar
 import com.bidyut.tech.bhandar.DataFetcher
 import com.bidyut.tech.bhandar.Storage
+import com.rickclephas.kmp.nativecoroutines.NativeCoroutines
 import dev.quotes.di.AppScope
 import dev.quotes.network.QuotesService
 import dev.quotes.network.model.QuoteWithAuthor
@@ -30,6 +31,7 @@ class QuotesRepository(
         write = { _, newValue -> memStorage.emit(newValue) }
     )
 ) {
+    @NativeCoroutines
     fun getQuotes() = cached(
         Unit,
         refresh = false

@@ -1,5 +1,6 @@
 package dev.quotes.ui
 
+import com.rickclephas.kmp.nativecoroutines.NativeCoroutinesIgnore
 import com.rickclephas.kmp.nativecoroutines.NativeCoroutinesState
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.Flow
@@ -45,8 +46,10 @@ abstract class TriggerUseCase<Trigger, UiState>(
 
     protected abstract fun makeInitialState(): UiState
 
+    @NativeCoroutinesIgnore
     protected abstract fun makeFlow(): Flow<UiState>
 
+    @NativeCoroutinesIgnore
     protected abstract suspend fun handleTriggers(
         trigger: Trigger,
     )
