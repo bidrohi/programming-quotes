@@ -67,9 +67,11 @@ abstract class CommonGraph(
         private lateinit var instance: CommonGraph
 
         fun init(
-            graph: CommonGraph
+            graph: () -> CommonGraph
         ) {
-            instance = graph
+            if (!::instance.isInitialized) {
+                instance = graph()
+            }
         }
 
         fun get() = instance

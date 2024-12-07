@@ -14,13 +14,15 @@ abstract class UiGraph(
 ) {
     abstract val ourViewModelFactory: ViewModelProvider.Factory
 
+    abstract fun makeQuotesNativeViewModel(): QuotesNativeViewModel
+
     @Provides
     @RetainedScope
     protected fun provideViewModelProviderFactory(
-        quotesViewModel: () -> QuotesViewModel,
+        quotesViewModel: () -> QuotesComposeViewModel,
     ): ViewModelProvider.Factory {
         return viewModelFactory {
-            addInitializer(QuotesViewModel::class) {
+            addInitializer(QuotesComposeViewModel::class) {
                 quotesViewModel()
             }
         }

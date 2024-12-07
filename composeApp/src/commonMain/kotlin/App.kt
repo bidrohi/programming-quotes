@@ -1,4 +1,3 @@
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -21,20 +20,21 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import dev.quotes.network.model.QuoteWithAuthor
 import dev.quotes.ui.QuotesUseCase
-import dev.quotes.ui.QuotesViewModel
+import dev.quotes.ui.QuotesComposeViewModel
 import dev.quotes.ui.UiGraph
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
 @Composable
 @Preview
 fun App(
-    viewModel: QuotesViewModel = viewModel(factory = UiGraph.build().ourViewModelFactory)
+    viewModel: QuotesComposeViewModel = viewModel(factory = UiGraph.build().ourViewModelFactory)
 ) {
     MaterialTheme {
         Surface(
             color = MaterialTheme.colors.background,
             modifier = Modifier.fillMaxSize()
         ) {
+            viewModel.uiState
             val state by viewModel.uiState.collectAsState(QuotesUseCase.UiState.Loading)
             val contentModifier = Modifier.fillMaxSize()
             when (val s = state) {
@@ -74,7 +74,6 @@ fun ErrorScreen(
     }
 }
 
-@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun QuotesScreen(
     quotes: List<QuoteWithAuthor>,
@@ -86,24 +85,34 @@ fun QuotesScreen(
         pageSize = PageSize.Fill,
         pageSpacing = 1.dp,
         modifier = modifier,
-    ) {
-        val q = quotes[it]
-        Box(
+    ) { index ->
+        val q = quotes[index]
+        QuoteView(
+            quote = q,
             modifier = Modifier.fillMaxSize()
                 .padding(16.dp)
-                .border(8.dp, MaterialTheme.colors.primary, RoundedCornerShape(16.dp))
-                .padding(32.dp),
-        ) {
-            Text(
-                text = q.quote,
-                style = MaterialTheme.typography.h4,
-                textAlign = TextAlign.Center,
-                modifier = Modifier.align(Alignment.Center),
-            )
-            Text(
-                text = q.author,
-                modifier = Modifier.align(Alignment.BottomCenter),
-            )
-        }
+        )
+    }
+}
+
+@Composable
+private fun QuoteView(
+    quote: QuoteWithAuthor,
+    modifier: Modifier = Modifier,
+) {
+    Box(
+        modifier = modifier.border(8.dp, MaterialTheme.colors.primary, RoundedCornerShape(16.dp))
+            .padding(32.dp),
+    ) {
+        Text(
+            text = quote.quote,
+            style = MaterialTheme.typography.h4,
+            textAlign = TextAlign.Center,
+            modifier = Modifier.align(Alignment.Center),
+        )
+        Text(
+            text = quote.author,
+            modifier = Modifier.align(Alignment.BottomCenter),
+        )
     }
 }

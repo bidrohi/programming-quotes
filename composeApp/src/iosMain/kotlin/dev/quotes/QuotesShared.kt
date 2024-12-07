@@ -6,8 +6,12 @@ import dev.quotes.di.CommonGraph
 import dev.quotes.di.create
 import io.ktor.client.engine.darwin.Darwin
 
-fun MainViewController() = ComposeUIViewController(
-    configure = {
-        CommonGraph.init(CommonGraph::class.create(Darwin))
+fun initialize() {
+    CommonGraph.init {
+        CommonGraph::class.create(Darwin)
     }
-) { App() }
+}
+
+fun makeComposeViewController() = ComposeUIViewController{
+    App()
+}

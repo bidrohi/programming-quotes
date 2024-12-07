@@ -10,13 +10,16 @@ import me.tatarka.inject.annotations.Inject
 
 @Inject
 @RetainedScope
-class QuotesViewModel(
+class QuotesComposeViewModel(
     repository: QuotesRepository
 ) : ViewModel() {
-
     private val useCase = QuotesUseCase(repository, viewModelScope)
 
     @NativeCoroutines
     val uiState: Flow<QuotesUseCase.UiState>
         get() = useCase.uiState
+
+    fun sendTrigger(event: Unit) {
+        useCase.sendTrigger(event)
+    }
 }
