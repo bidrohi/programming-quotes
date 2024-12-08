@@ -7,7 +7,9 @@ import kotlinx.browser.document
 
 @OptIn(ExperimentalComposeUiApi::class)
 fun main() {
-    CommonGraph.init(CommonGraph::class.create(Js))
+    CommonGraph.init {
+        CommonGraph::class.create(Js)
+    }
     ComposeViewport(document.body!!) {
         App()
     }

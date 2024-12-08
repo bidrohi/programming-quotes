@@ -10,7 +10,9 @@ import platform.AppKit.NSApplication
 
 fun main() {
     NSApplication.sharedApplication()
-    CommonGraph.init(CommonGraph::class.create(Darwin))
+    CommonGraph.init {
+        CommonGraph::class.create(Darwin)
+    }
     Window(
         title = "Programming Quotes",
     ) {

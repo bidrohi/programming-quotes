@@ -8,6 +8,8 @@ import io.ktor.client.engine.android.Android
 class QuotesApplication : Application() {
     override fun onCreate() {
         super.onCreate()
-        CommonGraph.init(CommonGraph::class.create(Android))
+        CommonGraph.init {
+            CommonGraph::class.create(Android)
+        }
     }
 }
