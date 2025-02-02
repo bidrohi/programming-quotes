@@ -5,7 +5,7 @@ build-sdk-compile = "35"
 build-tools = "35.0.0"
 build-ndk = "27.1.12297006"
 
-android-gradle = "8.7.3"
+android-gradle = "8.10.1"
 
 jetbrains-kotlin-core = "2.1.0"
 jetbrains-kotlin-coroutines = "1.9.0"

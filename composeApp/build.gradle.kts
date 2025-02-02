@@ -46,7 +46,7 @@ kotlin {
 
     @OptIn(ExperimentalWasmDsl::class)
     wasmJs {
-        moduleName = "composeApp"
+        outputModuleName = "composeApp"
         browser {
             val rootDirPath = project.rootDir.path
             val projectDirPath = project.projectDir.path
@@ -67,10 +67,6 @@ kotlin {
     sourceSets {
         all {
             languageSettings.optIn("kotlin.experimental.ExperimentalObjCName")
-        }
-        commonMain {
-            // Work around for Ktorfit bug: https://github.com/Foso/Ktorfit/issues/591
-            kotlin.srcDir("${layout.buildDirectory.get()}/generated/ksp/metadata/commonMain/kotlin")
         }
         commonMain.dependencies {
             implementation(compose.runtime)
