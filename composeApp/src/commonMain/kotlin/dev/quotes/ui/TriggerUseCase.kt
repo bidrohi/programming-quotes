@@ -6,6 +6,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import kotlin.native.ObjCName
@@ -14,7 +15,7 @@ abstract class TriggerUseCase<Trigger, UiState>(
     @ObjCName("_") protected val useCaseScope: CoroutineScope,
 ) : TriggerViewModel<Trigger, UiState> {
     @NativeCoroutinesState
-    override val uiState by lazy {
+    override val uiState: StateFlow<UiState> by lazy {
         makeFlow().stateIn(
             useCaseScope,
             SharingStarted.Lazily,

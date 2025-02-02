@@ -1,43 +1,43 @@
 [versions]
 build-sdk-min = "21"
-build-sdk-target = "35"
-build-sdk-compile = "35"
-build-tools = "35.0.0"
-build-ndk = "27.1.12297006"
+build-sdk-target = "36"
+build-sdk-compile = "36"
+build-tools = "36.0.0"
+build-ndk = "28.1.13356709"
 
 android-gradle = "8.10.1"
 
-jetbrains-kotlin-core = "2.1.0"
-jetbrains-kotlin-coroutines = "1.9.0"
-jetbrains-kotlin-datetime = "0.6.1"
-jetbrains-kotlinx-json = "1.7.3"
-jetbrains-kover-gradle = "0.8.3"
-jetbrains-compose = "1.8.0-alpha01"
-jetbrains-lifecycle = "2.9.0-alpha01"
+jetbrains-kotlin-core = "2.1.21"
+jetbrains-kotlin-coroutines = "1.10.2"
+jetbrains-kotlin-datetime = "0.6.2"
+jetbrains-kotlinx-json = "1.8.1"
+jetbrains-kover-gradle = "0.9.1"
+jetbrains-compose = "1.8.1"
+jetbrains-lifecycle = "2.9.0"
 
-google-ksp = "2.1.0-1.0.29"
+google-ksp = "2.1.21-2.0.1"
 
-kotlin-inject = "0.7.2"
+kotlin-inject = "0.8.0"
 
-jdk-desugar = "2.1.3"
+jdk-desugar = "2.1.5"
 
 kermit = "2.0.5"
-nsexception = "1.0.0-BETA-8"
+nsexception = "1.0.0"
 
-ktor = "3.0.2"
-ktorfit = "2.2.0"
+ktor = "3.1.3"
+ktorfit = "2.5.2"
 
-androidx-activityCompose = "1.9.3"
-androidx-core = "1.15.0"
-androidx-fragment = "1.8.5"
+androidx-activityCompose = "1.10.1"
+androidx-core = "1.16.0"
+androidx-fragment = "1.8.7"
 androidx-lifecycle-extensions = "2.2.0"
 
-bhandar = "0.2.0"
+bhandar = "0.3.0"
 
-native-coroutines = "1.0.0-ALPHA-38"
+native-coroutines = "1.0.0-ALPHA-43"
 
 test-junit = "4.13.2"
-test-mokkery = "2.6.0"
+test-mokkery = "2.8.0"
 test-turbine = "1.2.0"
 
 [libraries]

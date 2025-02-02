@@ -2,11 +2,13 @@ package dev.quotes.data
 
 import com.bidyut.tech.bhandar.Bhandar
 import com.bidyut.tech.bhandar.DataFetcher
+import com.bidyut.tech.bhandar.ReadResult
 import com.bidyut.tech.bhandar.Storage
 import com.rickclephas.kmp.nativecoroutines.NativeCoroutines
 import dev.quotes.di.AppScope
 import dev.quotes.network.QuotesService
 import dev.quotes.network.model.QuoteWithAuthor
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import me.tatarka.inject.annotations.Inject
 
@@ -32,7 +34,7 @@ class QuotesRepository(
     )
 ) {
     @NativeCoroutines
-    fun getQuotes() = cached(
+    fun getQuotes(): Flow<ReadResult<List<QuoteWithAuthor>>> = cached(
         Unit,
         refresh = false
     )
