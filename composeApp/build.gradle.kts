@@ -30,7 +30,6 @@ kotlin {
         iosTarget.binaries.framework {
             baseName = "QuotesShared"
             isStatic = true
-            export(libs.nsexception)
         }
     }
 
@@ -110,7 +109,6 @@ kotlin {
         }
         iosMain.dependencies {
             implementation(libs.ktor.darwin)
-            api(libs.nsexception)
         }
         val desktopMain by getting
         desktopMain.dependencies {
