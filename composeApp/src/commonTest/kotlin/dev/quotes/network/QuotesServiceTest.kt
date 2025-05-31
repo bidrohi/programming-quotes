@@ -10,14 +10,14 @@ import io.ktor.http.HttpStatusCode
 import io.ktor.http.headersOf
 import io.ktor.serialization.kotlinx.json.json
 import io.ktor.utils.io.ByteReadChannel
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.test.runTest
 import kotlinx.serialization.json.Json
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
 class QuotesServiceTest {
     @Test
-    fun testGetQuotes() {
+    fun testGetQuotes() = runTest {
         val engine = MockEngine { request ->
             respond(
                 content = ByteReadChannel(
@@ -69,9 +69,7 @@ class QuotesServiceTest {
                 }
             })
         }.createQuotesService()
-        val response = runBlocking {
-            service.getQuotes()
-        }
+        val response = service.getQuotes()
         assertEquals(5, response.quotes.size)
     }
 }

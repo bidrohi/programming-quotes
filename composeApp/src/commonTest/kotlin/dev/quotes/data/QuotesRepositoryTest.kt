@@ -38,7 +38,7 @@ class QuotesRepositoryTest {
             assertIs<ReadResult.Loading<*>>(awaitItem())
             val result = awaitItem()
             assertIs<ReadResult.Success<*>>(result)
-            assertEquals(response, result.data)
+            assertEquals(response.quotes, result.data)
 
             verifySuspend(exactly(1)) { service.getQuotes() }
         }
@@ -48,7 +48,7 @@ class QuotesRepositoryTest {
             assertIs<ReadResult.Loading<*>>(awaitItem())
             val result = awaitItem()
             assertIs<ReadResult.Cache<*>>(result)
-            assertEquals(response, result.data)
+            assertEquals(response.quotes, result.data)
 
             verifySuspend(not) { service.getQuotes() }
         }
