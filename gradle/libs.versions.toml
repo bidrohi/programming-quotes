@@ -13,6 +13,7 @@ jetbrains-kotlin-datetime = "0.6.2"
 jetbrains-kotlinx-json = "1.8.1"
 jetbrains-kover-gradle = "0.9.1"
 jetbrains-compose = "1.8.1"
+jetbrains-composeHotReload = "1.0.0-alpha10"
 jetbrains-lifecycle = "2.9.0"
 
 google-ksp = "2.1.21-2.0.1"
@@ -89,6 +90,7 @@ jetbrains-kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version
 jetbrains-kotlin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "jetbrains-kotlin-core" }
 jetbrains-kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "jetbrains-kotlin-core" }
 jetbrains-compose = { id = "org.jetbrains.compose", version.ref = "jetbrains-compose" }
+jetbrains-composeHotReload = { id = "org.jetbrains.compose.hot-reload", version.ref = "jetbrains-composeHotReload" }
 jetbrains-kotlinx-kover = { id = "org.jetbrains.kotlinx.kover", version.ref = "jetbrains-kover-gradle" }
 
 google-ksp = { id = "com.google.devtools.ksp", version.ref = "google-ksp" }

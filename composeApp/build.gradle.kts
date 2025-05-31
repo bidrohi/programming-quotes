@@ -9,6 +9,7 @@ plugins {
     alias(libs.plugins.jetbrains.kotlin.serialization)
     alias(libs.plugins.jetbrains.kotlin.compose)
     alias(libs.plugins.jetbrains.compose)
+    alias(libs.plugins.jetbrains.composeHotReload)
     alias(libs.plugins.google.ksp)
     alias(libs.plugins.native.coroutines)
     alias(libs.plugins.ktorfit)
