@@ -14,7 +14,7 @@ fun main() {
         CommonGraph::class.create(Darwin)
     }
     Window(
-        title = "Programming Quotes",
+        title = "Quotes",
     ) {
         App(
             viewModel = UiGraph.build().ourViewModelFactory

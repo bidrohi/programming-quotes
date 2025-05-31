@@ -34,7 +34,7 @@ struct ModeSelectorView: View {
                 .buttonStyle(.borderedProminent)
                 .padding(20)
             }
-            .navigationTitle("Programming Quotes")
+            .navigationTitle("Quotes")
             .navigationDestination(for: String.self) { value in
                 if value == "1" {
                     ContentView()

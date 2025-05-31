@@ -1,4 +1,4 @@
-rootProject.name = "ProgrammingQuotes"
+rootProject.name = "Quotes"
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 pluginManagement {
