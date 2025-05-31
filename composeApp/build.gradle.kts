@@ -59,6 +59,13 @@ kotlin {
                     }
                 }
             }
+            testTask {
+                useKarma {
+                    // useFirefox()
+                    // useChrome()
+                    // useSafari()
+                }
+            }
         }
         binaries.executable()
     }
