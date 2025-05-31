@@ -20,7 +20,7 @@ class QuotesRepository(
 ) : Bhandar<Any, List<QuoteWithAuthor>>(
     fetcher = DataFetcher.of {
         try {
-            Result.success(service.getQuotes())
+            Result.success(service.getQuotes().quotes)
         } catch (e: Exception) {
             Result.failure(e)
         }

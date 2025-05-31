@@ -59,7 +59,7 @@ abstract class CommonGraph(
     fun providesQuotesService(
         httpClient: HttpClient
     ): QuotesService = ktorfit {
-        baseUrl("https://programming-quotesapi.vercel.app/api/")
+        baseUrl("https://dummyjson.com/")
         httpClient(httpClient)
     }.createQuotesService()
 

@@ -21,24 +21,38 @@ class QuotesServiceTest {
         val engine = MockEngine { request ->
             respond(
                 content = ByteReadChannel(
-                    """[
-                        {
-                            "author": "Douglas Crockford",
-                            "quote": "Mathematics is important in programming, but it’s just one of a lot of things that are important. If you overemphasize the math then you underemphasize stuff which might be even more important, such as literacy."
-                        },
-                        {
-                            "author": "Martin Fowler",
-                            "quote": "There are few things more frustrating or time wasting than debugging. Wouldn't it be a hell of a lot quicker if we just didn't create the bugs in the first place?"
-                        },
-                        {
-                            "author": "James Gleick",
-                            "quote": "Computer programs are the most intricate, delicately balanced and finely interwoven of all the products of human industry to date."
-                        },
-                        {
-                            "author": "Douglas Crockford",
-                            "quote": "JavaScript, purely by accident, has become the most popular programming language in the world."
-                        }
-                    ]""".trimIndent()
+                    """{
+                        "quotes": [
+                            {
+                                "id": 1,
+                                "quote": "Your heart is the size of an ocean. Go find yourself in its hidden depths.",
+                                "author": "Rumi"
+                            },
+                            {
+                                "id": 2,
+                                "quote": "The Bay of Bengal is hit frequently by cyclones. The months of November and May, in particular, are dangerous in this regard.",
+                                "author": "Abdul Kalam"
+                            },
+                            {
+                                "id": 3,
+                                "quote": "Thinking is the capital, Enterprise is the way, Hard Work is the solution.",
+                                "author": "Abdul Kalam"
+                            },
+                            {
+                                "id": 4,
+                                "quote": "If You Can'T Make It Good, At Least Make It Look Good.",
+                                "author": "Bill Gates"
+                            },
+                            {
+                                "id": 5,
+                                "quote": "Heart be brave. If you cannot be brave, just go. Love's glory is not a small thing.",
+                                "author": "Rumi"
+                            }
+                        ],
+                        "total": 1454,
+                        "skip": 0,
+                        "limit": 5
+                    }""".trimIndent()
                 ),
                 status = HttpStatusCode.OK,
                 headers = headersOf(HttpHeaders.ContentType, "application/json")
@@ -55,9 +69,9 @@ class QuotesServiceTest {
                 }
             })
         }.createQuotesService()
-        val quotes = runBlocking {
+        val response = runBlocking {
             service.getQuotes()
         }
-        assertEquals(4, quotes.size)
+        assertEquals(5, response.quotes.size)
     }
 }

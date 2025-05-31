@@ -11,6 +11,7 @@ import dev.mokkery.verify.VerifyMode.Companion.not
 import dev.mokkery.verifySuspend
 import dev.quotes.network.QuotesService
 import dev.quotes.network.model.QuoteWithAuthor
+import dev.quotes.network.model.QuotesResponse
 import kotlinx.coroutines.test.runTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -19,11 +20,14 @@ import kotlin.test.assertIs
 class QuotesRepositoryTest {
     @Test
     fun canProcessSuccess() = runTest {
-        val response = listOf(
-            QuoteWithAuthor(
-                quote = "quote",
-                author = "author"
-            )
+        val response = QuotesResponse(
+            quotes = listOf(
+                QuoteWithAuthor(
+                    quote = "quote",
+                    author = "author"
+                )
+            ),
+            totalAvailable = 2,
         )
         val service = mock<QuotesService> {
             everySuspend { getQuotes() } returns response
