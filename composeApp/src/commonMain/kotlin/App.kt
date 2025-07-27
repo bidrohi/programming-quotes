@@ -19,8 +19,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import dev.quotes.network.model.QuoteWithAuthor
-import dev.quotes.ui.QuotesUseCase
 import dev.quotes.ui.QuotesComposeViewModel
+import dev.quotes.ui.QuotesUseCase
 import dev.quotes.ui.UiGraph
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
@@ -34,7 +34,6 @@ fun App(
             color = MaterialTheme.colors.background,
             modifier = Modifier.fillMaxSize()
         ) {
-            viewModel.uiState
             val state by viewModel.uiState.collectAsState(QuotesUseCase.UiState.Loading)
             val contentModifier = Modifier.fillMaxSize()
             when (val s = state) {
