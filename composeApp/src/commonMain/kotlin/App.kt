@@ -2,6 +2,7 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.safeContentPadding
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.PageSize
 import androidx.compose.foundation.pager.rememberPagerState
@@ -36,6 +37,7 @@ fun App(
         ) {
             val state by viewModel.uiState.collectAsState(QuotesUseCase.UiState.Loading)
             val contentModifier = Modifier.fillMaxSize()
+                .safeContentPadding()
             when (val s = state) {
                 is QuotesUseCase.UiState.Loading -> LoadingScreen(contentModifier)
                 is QuotesUseCase.UiState.Error -> ErrorScreen(s.errorMessage, contentModifier)
